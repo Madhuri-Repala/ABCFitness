@@ -13,21 +13,21 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ClassNotFoundException.class)
     public ResponseEntity<Object> handleClassNotFound(ClassNotFoundException ex) {
         ErrorResponse errorResponse = new ErrorResponse("Class not found", ex.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     // Handle BookingException
     @ExceptionHandler(BookingException.class)
     public ResponseEntity<Object> handleBookingException(BookingException ex) {
         ErrorResponse errorResponse = new ErrorResponse("Booking Error", ex.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     // Handle InvalidInputException
     @ExceptionHandler(InvalidInputException.class)
     public ResponseEntity<Object> handleInvalidInput(InvalidInputException ex) {
         ErrorResponse errorResponse = new ErrorResponse("Invalid Input", ex.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     // Handle any generic exception
